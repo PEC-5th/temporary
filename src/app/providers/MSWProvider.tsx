@@ -7,7 +7,7 @@ export const MSWProvider = () => {
     const initMSW = async () => {
       if (typeof window !== 'undefined') {
         try {
-          await import('@/shared/api/msw/mocks/browser');
+          await import('@/app/msw/mocks/browser');
           console.log('MSW initialized');
         } catch (error) {
           console.error('Failed to initialize MSW:', error);
