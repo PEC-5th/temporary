@@ -7,7 +7,7 @@
    ```json
    {
      "scripts": {
-       "mock": "npx tsx watch ./src/shared/api/msw/mocks/http.ts"
+       "mock": "npx tsx watch ./src/app/msw/mocks/http.ts"
      }
    }
    ```
