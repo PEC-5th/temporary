@@ -1,17 +1,13 @@
-import { http, HttpResponse } from 'msw';
+import { HttpResponse, http } from 'msw';
 
-interface User {
-  id: number;
-  name: string;
-  email: string;
-}
+import { User } from '@/shared/types/entry';
 
 const users: User[] = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },
   { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
 ];
 
-export const handlers = [
+export const userHandlers = [
   // GET 요청 처리
   http.get('/api/users', () => {
     return HttpResponse.json(users);
