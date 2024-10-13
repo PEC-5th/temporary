@@ -1,7 +1,9 @@
+import './globals.css';
+
+import Lnb from '@/widgets/Lnb/ui/Lnb';
+import { MSWProvider } from './providers/MSWProvider';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './globals.css';
-import { MSWProvider } from './providers/MSWProvider';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -25,12 +27,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MSWProvider />
-        {children}
+        <Lnb />
+        <main
+          className={`
+          px-4 py-8 flex justify-center items-center flex-1 md:ml-33 transition-all duration-300 ease-in-out
+        `}
+        >
+          {children}
+        </main>
       </body>
     </html>
   );

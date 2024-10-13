@@ -39,6 +39,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --nav-narrow-width: 4rem;
+    --nav-wide-width: 160px;
   }
   .dark {
     --background: 240 10% 3.9%;
@@ -74,5 +76,25 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+  }
+  a {
+    @apply inline-block;
+  }
+  svg {
+    @apply inline-block;
+  }
+}
+
+@layer components {
+  main {
+    width: calc(100% - var(--nav-narrow-width));
+    margin: 0 0 0 var(--nav-narrow-width);
+  }
+
+  @screen md {
+    main {
+      @apply ml-[var(--nav-wide-width)];
+      width: calc(100% - var(--nav-wide-width));
+    }
   }
 }
