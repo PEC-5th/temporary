@@ -5,13 +5,13 @@ import { Popover, PopoverContent, PopoverTrigger } from './Popover';
 
 interface AvatarWithPopoverProps {
   src: AvatarImageProps['src'];
-  fallback: string;
+  fallbackText: string;
   RenderPopoverContent: ReactNode;
 }
 
 export default function AvatarWithPopover({
   src,
-  fallback,
+  fallbackText,
   RenderPopoverContent,
 }: AvatarWithPopoverProps) {
   return (
@@ -19,7 +19,7 @@ export default function AvatarWithPopover({
       <PopoverTrigger asChild>
         <Avatar>
           <AvatarImage src={src} />
-          <AvatarFallback>{fallback}</AvatarFallback>
+          <AvatarFallback>{fallbackText}</AvatarFallback>
         </Avatar>
       </PopoverTrigger>
       <PopoverContent>{RenderPopoverContent}</PopoverContent>
