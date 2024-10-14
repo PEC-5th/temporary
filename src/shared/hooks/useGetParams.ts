@@ -1,6 +1,8 @@
 import { useParams } from 'next/navigation';
 
-type ExtractedParams = { [key: string]: string | string[] | undefined | null };
+type ExtractedParams = {
+  [key: string]: string | string[] | number | undefined | null;
+};
 
 export default function useGetParams(keys: string[]) {
   const params = useParams();
@@ -9,7 +11,9 @@ export default function useGetParams(keys: string[]) {
   const extractedParams: ExtractedParams = {};
 
   keys.forEach((key) => {
-    extractedParams[key] = params[key] || searchParams.get(key);
+    const value = params[key] || searchParams.get(key);
+
+    extractedParams[key] = !isNaN(Number(value)) ? Number(value) : value;
   });
 
   return extractedParams;
