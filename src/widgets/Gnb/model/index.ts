@@ -1,3 +1,4 @@
+import { MENU } from '@/shared/constants/menu';
 import { PATHS } from '@/shared/constants/path';
 
 interface NavgationMenu {
@@ -6,6 +7,6 @@ interface NavgationMenu {
 }
 
 export const NAVIGATION_MENUS: NavgationMenu[] = [
-  { name: '스레드', path: 'THREADS' },
-  { name: '아티클', path: 'ARTICLES' },
+  { name: MENU.THREADS, path: 'THREADS' },
+  { name: MENU.ARTICLES, path: 'ARTICLES' },
 ];
