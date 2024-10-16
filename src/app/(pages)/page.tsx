@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import ConfirmRequestVideoCallDialog from '@/features/video-call/ConfirmRequestVideoCallDialog';
 
 interface User {
   id: number;
@@ -79,19 +80,24 @@ const UserManagement: React.FC = () => {
       <h2>Add New User</h2>
       <form onSubmit={addUser}>
         <input
-          type='text'
-          placeholder='Name'
+          type="text"
+          placeholder="Name"
           value={newUser.name}
           onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
         />
         <input
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={newUser.email}
           onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
         />
-        <button type='submit'>Add User</button>
+        <button type="submit">Add User</button>
       </form>
+      <ConfirmRequestVideoCallDialog
+        userId={1}
+        schedules={['2024년 1월 2일']}
+        open={true}
+      />
     </div>
   );
 };
