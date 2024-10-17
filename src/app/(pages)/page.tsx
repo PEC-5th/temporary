@@ -79,18 +79,18 @@ const UserManagement: React.FC = () => {
       <h2>Add New User</h2>
       <form onSubmit={addUser}>
         <input
-          type='text'
-          placeholder='Name'
+          type="text"
+          placeholder="Name"
           value={newUser.name}
           onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
         />
         <input
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={newUser.email}
           onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
         />
-        <button type='submit'>Add User</button>
+        <button type="submit">Add User</button>
       </form>
     </div>
   );
