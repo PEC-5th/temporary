@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Article } from '@/shared/types/entry';
+import { Article } from '@/shared/types';
 import { articlesApi } from '@/features/articles/api/articlesApi';
 
 export const useArticles = () => {

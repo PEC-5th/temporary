@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw';
 
-import { Article } from '@/shared/types/entry';
+import { Article } from '@/shared/types';
 
 const articles: Article[] = [
   { id: 1, title: '첫 번째 글', content: '내용...' },

@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw';
 
-import { User } from '@/shared/types/entry';
+import { User } from '@/shared/types';
 
 const users: User[] = [
   { id: 1, name: 'John Doe', email: 'john@example.com' },

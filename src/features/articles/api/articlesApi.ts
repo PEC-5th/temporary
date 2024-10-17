@@ -1,4 +1,4 @@
-import { Article, ArticleData } from '@/shared/types/entry';
+import { Article, ArticleData } from '@/shared/types';
 
 // TODO: 모의 서버 주소
 const API_BASE_URL = 'http://localhost:9090';
