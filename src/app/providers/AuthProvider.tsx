@@ -1,37 +1,46 @@
 'use client';
 
-import { onAuthStateChanged, User } from 'firebase/auth';
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { auth } from '../../../firebaseApp';
+import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
+import { ReactNode, createContext, useEffect, useState } from 'react';
+import { app } from '../../../firebaseApp';
 
 interface AuthContextType {
   user: User | null;
-  loading: boolean;
+  isAuthenticated: boolean;
+  isInitialized: boolean;
 }
 
-const AuthContext = createContext<AuthContextType>({
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
+export const AuthContext = createContext<AuthContextType>({
   user: null,
-  loading: true,
+  isAuthenticated: false,
+  isInitialized: false,
 });
 
-export function AuthProvider({ children }: { children: React.ReactNode }) {
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+  const auth = getAuth(app);
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [isInitialized, setIsInitialized] = useState<boolean>(false);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
       setUser(firebaseUser);
-      setLoading(false);
+      setIsAuthenticated(!!firebaseUser);
+      setIsInitialized(true);
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [auth]);
 
   return (
-    <AuthContext.Provider value={{ user, loading }}>
-      {children}
+    <AuthContext.Provider value={{ user, isAuthenticated, isInitialized }}>
+      {isInitialized ? children : <div>Loading...</div>}
     </AuthContext.Provider>
   );
-}
+};
 
-export const useAuth = () => useContext(AuthContext);
+export default AuthProvider;
