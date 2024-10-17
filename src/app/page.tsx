@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { GoogleSignInButton } from '@/features/auth/sign-in/ui/GoogleSignInButton';
 
 interface User {
   id: number;
@@ -65,7 +66,7 @@ const UserManagement: React.FC = () => {
   return (
     <div>
       <h1>User Management</h1>
-
+      <GoogleSignInButton />
       <h2>User List</h2>
       <ul>
         {users.map((user) => (
