@@ -12,7 +12,7 @@ export async function googleSignIn(): Promise<SignInResponse> {
     const result: UserCredential = await signInWithPopup(auth, provider);
 
     const idToken = await result.user.getIdToken();
-
+    //TODO: axios로 교체
     const response = await fetch('/api/auth/google', {
       method: 'POST',
       headers: {
