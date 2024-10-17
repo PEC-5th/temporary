@@ -33,11 +33,7 @@ export default function RootLayout({
       >
         <MSWProvider />
         <Lnb />
-        <main
-          className={`
-          px-4 py-8 flex justify-center items-center flex-1 md:ml-33 transition-all duration-300 ease-in-out
-        `}
-        >
+        <main className="px-4 py-8 flex justify-center items-center flex-1 md:ml-33 transition-all duration-300 ease-in-out">
           {children}
         </main>
       </body>
