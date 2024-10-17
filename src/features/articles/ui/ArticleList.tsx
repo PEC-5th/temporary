@@ -1,11 +1,8 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
-import React, { useEffect, useState } from 'react';
-
-import ArticleMoreButton from './ArticleMoreButton';
-import Link from 'next/link';
-import { useArticles } from '@/features/articles/model/useArticles';
+import ArticleComponent from '@/entities/article/ArticleComponent';
+import React from 'react';
+import { useArticles } from '../model/useArticles';
 
 const ArticleList = () => {
   const { articles } = useArticles();
@@ -13,15 +10,7 @@ const ArticleList = () => {
   return (
     <>
       {articles.map((article) => (
-        <Card key={article.id}>
-          <CardHeader>
-            <CardTitle>{article.title}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p>{article.content?.substring(0, 100)}...</p>
-            <ArticleMoreButton articleId={article.id.toString()} />
-          </CardContent>
-        </Card>
+        <ArticleComponent key={article.id} article={article} />
       ))}
     </>
   );
