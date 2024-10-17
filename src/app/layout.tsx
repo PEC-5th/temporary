@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { AuthProvider } from './providers/AuthProvider';
+
+import AuthProvider from './providers/AuthProvider';
 import { MSWProvider } from './providers/MSWProvider';
 import TQProvider from './providers/TQProvider';
 
