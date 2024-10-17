@@ -18,4 +18,4 @@ const GoogleSignInButton = () => {
   );
 };
 
-export { useGoogleSignIn, GoogleSignInButton };
+export { GoogleSignInButton };
