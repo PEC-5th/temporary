@@ -19,7 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "firebaseApp/*": ["./firebaseApp/*"],
+      "firebaseAdmin/*": ["./firebaseAdmin/*"]
     }
   },
   "include": [

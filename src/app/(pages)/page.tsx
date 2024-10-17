@@ -1,6 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { GoogleSignInButton } from '@/features/auth/sign-in/ui/GoogleSignInButton';
+import { GoogleSignOutButton } from '@/features/auth/sign-out/ui/GoogleSignOutButton';
+import { AuthContext } from '../providers/AuthProvider';
 
 interface User {
   id: number;
@@ -13,6 +16,7 @@ const API_BASE_URL = 'http://localhost:9090'; // 모의 서버 주소
 const UserManagement: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [newUser, setNewUser] = useState({ name: '', email: '' });
+  const { user, isAuthenticated } = useContext(AuthContext);
 
   // GET 요청: 모든 사용자 가져오기
   const fetchUsers = async () => {
@@ -65,7 +69,13 @@ const UserManagement: React.FC = () => {
   return (
     <div>
       <h1>User Management</h1>
-
+      <GoogleSignInButton />
+      <GoogleSignOutButton />
+      <div>
+        {isAuthenticated
+          ? `Welcome, ${user?.displayName || user?.email}!`
+          : 'Please sign in'}
+      </div>
       <h2>User List</h2>
       <ul>
         {users.map((user) => (
@@ -79,18 +89,18 @@ const UserManagement: React.FC = () => {
       <h2>Add New User</h2>
       <form onSubmit={addUser}>
         <input
-          type='text'
-          placeholder='Name'
+          type="text"
+          placeholder="Name"
           value={newUser.name}
           onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
         />
         <input
-          type='email'
-          placeholder='Email'
+          type="email"
+          placeholder="Email"
           value={newUser.email}
           onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
         />
-        <button type='submit'>Add User</button>
+        <button type="submit">Add User</button>
       </form>
     </div>
   );
