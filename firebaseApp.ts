@@ -1,4 +1,5 @@
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
 import { getApp, getApps, initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
@@ -29,4 +30,13 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
  */
 const auth = getAuth(app);
 
-export { auth, app };
+/**
+ * 현재 앱 인스턴스에 대한 Firestore 데이터베이스를 초기화합니다.
+ * 이를 통해 Firestore 데이터베이스와 상호작용할 수 있습니다.
+ *
+ * @constant
+ * @type {Firestore}
+ */
+const db = getFirestore(app);
+
+export { auth, app, db };
