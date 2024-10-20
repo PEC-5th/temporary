@@ -1,4 +1,4 @@
-import useGetUserInformation from '@/entities/user/api/useGetUserInformation';
+import useGetUserInformation from '@/shared/api/users/useGetUserInformation';
 import { useToast } from '@/shared/config/use-toast';
 import usePostRequestVideoCall from '../api/useRequestVideoCall';
 

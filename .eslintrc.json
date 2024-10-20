@@ -14,7 +14,7 @@
   },
   "rules": {
     "import/order": "warn",
-    "import/no-internal-modules": "warn",
+    "import/no-internal-modules": "off",
     "react/react-in-jsx-scope": "off",
     "boundaries/element-types": "error"
   },

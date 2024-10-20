@@ -1,4 +1,4 @@
-import { Button } from '@/shared/ui/Button';
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/shared/ui/Dialog';
-import useConfirmRequestVideoCall from './model/useConfirmRequestVideoCall';
+import useConfirmRequestVideoCall from '../model/useConfirmRequestVideoCall';
 
 interface ConfirmRequestVideoCallDialogProps {
   open: boolean;
