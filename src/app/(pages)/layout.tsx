@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import Gnb from '@/widgets/Gnb/ui/Gnb';
+import Lnb from '@/widgets/Lnb/ui/Lnb';
 
 interface PagesLayoutProps {
   children: ReactNode;
@@ -7,12 +8,12 @@ interface PagesLayoutProps {
 
 const Pageslayout = ({ children }: PagesLayoutProps) => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 pb-10">
       <Gnb />
       <div className="flex justify-center px-4">
-        <div className="flex w-full max-w-[1440px] gap-10">
-          {/* TODO: LNB 추가 */}
-          <main>{children}</main>
+        <div className="flex w-full max-w-[1440px] gap-8">
+          <Lnb />
+          <main className="w-full">{children}</main>
         </div>
       </div>
     </div>

@@ -84,17 +84,3 @@ body {
     @apply inline-block;
   }
 }
-
-@layer components {
-  main {
-    width: calc(100% - var(--nav-narrow-width));
-    margin: 0 0 0 var(--nav-narrow-width);
-  }
-
-  @screen md {
-    main {
-      @apply ml-[var(--nav-wide-width)];
-      width: calc(100% - var(--nav-wide-width));
-    }
-  }
-}
