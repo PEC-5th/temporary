@@ -1,4 +1,6 @@
-import { Button } from '@/shared/ui/Button';
+import useGetUserInformation from '@/shared/api/users/useGetUserInformation';
+import { useToast } from '@/shared/config/use-toast';
+import { Button } from '@/shared/ui/button';
 import {
   Dialog,
   DialogContent,
@@ -6,19 +8,40 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@/shared/ui/dialog';
+} from '@/shared/ui/Dialog';
+import usePostRequestVideoCall from '../api/useRequestVideoCall';
 
 interface ConfirmRequestVideoCallDialogProps {
   open: boolean;
   schedules: string[];
-  user: { id: number; name: string };
+  userId: number;
 }
 
 export default function ConfirmRequestVideoCallDialog({
   open,
   schedules,
-  user,
+  userId,
 }: ConfirmRequestVideoCallDialogProps) {
+  const { toast } = useToast();
+  const { data: user } = useGetUserInformation({ userId });
+  const { mutate: postRequestVideoCall, isPending: isRequestVideoCallPending } =
+    usePostRequestVideoCall({
+      schedules,
+      userId,
+      options: {
+        onSuccess: () => {
+          // TODO: 라우팅 로직 작성
+          toast({
+            title: '요청이 완료되었습니다.',
+          });
+        },
+      },
+    });
+
+  const handleClickRequestVideoCallButton = () => {
+    postRequestVideoCall();
+  };
+
   return (
     <Dialog open={open}>
       <DialogContent className="sm:max-w-[425px]">
@@ -31,7 +54,7 @@ export default function ConfirmRequestVideoCallDialog({
         <div className="text-xs font-bold bg-slate-100 rounded-sm p-4 flex flex-col gap-4">
           <div>
             <p>닉네임</p>
-            <p>• {user.name}</p>
+            <p>• {user?.name}</p>
           </div>
           <div>
             <p>요청 시간</p>
@@ -44,8 +67,13 @@ export default function ConfirmRequestVideoCallDialog({
           </div>
         </div>
         <DialogFooter>
-          {/* TODO: model에 비즈니스 로직 작성하기 */}
-          <Button type="submit">요청하기</Button>
+          <Button
+            type="submit"
+            disabled={isRequestVideoCallPending}
+            onClick={handleClickRequestVideoCallButton}
+          >
+            요청하기
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
