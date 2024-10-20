@@ -12,7 +12,7 @@ const Pageslayout = ({ children }: PagesLayoutProps) => {
       <div className="flex justify-center px-4">
         <div className="flex w-full max-w-[1440px] gap-10">
           {/* TODO: LNB 추가 */}
-          <main>{children}</main>
+          <main className="min-h-without-gnb">{children}</main>
         </div>
       </div>
     </div>

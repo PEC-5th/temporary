@@ -7,6 +7,8 @@ export const PATHS = {
   SEARCH: '/search',
   MYPAGE: '/mypage',
   SETTINGS: '/settings',
+  TERMS: '/terms',
+  PRIVACY: '/privacy',
   THREAD_DETAIL: (threadId: number) => `${PATHS.THREADS}/${threadId}`,
   ARTICLE_DETAIL: (articleId: number) => `${PATHS.ARTICLES}/${articleId}`,
   VIDEO_CALL_REQUEST: (userId: number) => `/user/${userId}/video-call/request`,

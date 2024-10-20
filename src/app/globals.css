@@ -10,6 +10,12 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+
+  .min-h-without-gnb {
+    min-height: calc(
+      100vh - 56px - 40px - 40px
+    ); /* screen - gnb height - gap - padding bottom */
+  }
 }
 
 @layer base {
